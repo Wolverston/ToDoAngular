@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<title>ToDo Angular Valeshkovsky</title>
+
+</head>
+
+<body ng-app="ToDoList" ng-controller="mainCtrl">
+	<form ng-submit="addItem()">
+		<div id="buttons">
+			<input type="button" id="eye" ng-show="toggleDone()">
+			<input type="button" id="broom" ng-click="clearList()">
+			<p>
+				<input ng-model="item" class="newItem" placeholder="New item">
+				<input type="button" id="add" value="Add" ng-click="addItem()">
+				<input type="button" id="save" value="Сохранить" ng-click="save()">
+			</p>
+
+			<div id="items">
+				<ul ng-repeat="item in list">
+					<li class="done-{{item.done}}">
+						<div class="item"><span class="done-{{item.done}}">{{item.name}}</span></div>
+						<div class="pull-right">
+						<input type="checkbox" ng-model="item.done">
+						<button ng-click="done()" name="Done">Done</button>
+						<button ng-click="remove()">Del</button>						
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!--
+	<div ng-controller="mainCtrl">
+  <ul>
+      <li ng-repeat="item in items">
+          {{ item.name }}
+      </li>
+  </ul>
+</div>
+-->
+</body>
+
+</html>
