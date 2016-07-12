@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="todo">
+
+<head>
+	<title>Angular Todo-List Valeshkovsky</title>
+	<meta charset="UTF-8" />
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min.js"></script>
+	<script src="js/angular-local-storage.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/angular.editInPlace.js"></script>
+	<script src="js/angular.ngEnter.js"></script>
+
+</head>
+
+<body ng-controller="TodoCtrl" ng-init="init()">
+	<div class="container" ng-controller="TodoCtrl" id="playground">
+		<div class="row">
+		
+			<div class="row"> <!--Меню-->
+				<div class="col-sm-5"></div>
+				<div class="col-sm-4">
+					<ul class="nav nav-pills todo-filter">
+						<li ng-class="{'active' : show == 'All' }" ng-click="show='Incomplete'; toggle()" ng-show="a"><a href="#">Все задания</a></li>
+						<li ng-class="{'active' : show == 'Incomplete' }" ng-click="show='All'; toggle()" ng-show="!a"><a href="#">Активные</a></li>
+						<li class="active" ng-click="clearDone()"><a href="#">Удалить завершенные</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+			
+			<div class="row" id="todoAdd"> <!--Новая задача-->
+				<div class="col-sm-1"></div>
+				<div class="col-sm-10 form-group">
+					<input class="todoField" id="newTodoField" type="text" ng-model="newTodo" placeholder="Новая задача" ng-enter>
+					<button id="todoSubmit" class="btn btn-default" ng-click="addTodo()">Добавить</button>
+					<button id="todoSubmit" class="btn btn-default" ng-click="save()">Сохранить список</button>
+				</div>
+				<div class="col-sm-1"></div>
+			</div>
+			
+			<div class="row"> <!--Список задач-->
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8">
+					<ul class="list-unstyled">
+						<li class="todoTask done-{{todo.isDone}}" ng-repeat="todo in todos | filter:showFn">
+							<label class="todoCheckboxlabel"><input class="todoCheckbox" type="checkbox" ng-model="todo.isDone" />							
+							<edit-in-place value="todo.taskName"></edit-in-place></label>
+							<button type="button" class="close pull-right" aria-hidden="true" ng-click="deleteTodo($index)">&times;</button>
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+			
+		</div>
+
+</body>
+
+</html>

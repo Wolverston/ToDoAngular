@@ -1,0 +1,66 @@
+body{
+	margin-top: 15px;
+}
+
+li {
+	border-radius: 5px;
+}
+
+.done-true {
+	background-color: lightgreen;
+}
+
+.active {
+	background-color: #428bca;
+  border-color: #357ebd;
+}
+
+#todoAdd {
+	margin-left: 40px;
+}
+
+.todoField{
+	padding-left: 5px;
+	font-size: 20px;
+}
+
+#newTodoField{
+	margin: 20px;
+	width: 60%;
+	border-radius: 5px;
+}
+
+#todoSubmit{
+	margin-top: -5px;
+}
+
+.todoTask{
+	margin-bottom: 20px;
+	padding:5px;
+}
+
+.todoName{
+	font-size: 20px;
+	border-bottom: 1px lightgray solid;
+	padding-bottom:5px;
+}
+
+.edit-in-place span {
+  cursor: pointer;
+}
+
+.edit-in-place input {
+  display: none;
+}
+
+.edit-in-place.active {
+	width:200%;
+}
+
+.edit-in-place.active span {
+  display: none;
+}
+
+.edit-in-place.active input {
+  display: inline-block;
+}
